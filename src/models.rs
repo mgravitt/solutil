@@ -86,18 +86,22 @@ pub struct InstructionInfo {
 #[derive(Debug, Deserialize)]
 pub struct InfoDetails {
     pub mint: Option<String>,
-    pub newAccount: Option<String>,
+    #[serde(rename = "newAccount")]
+    pub new_account: Option<String>,
     pub owner: Option<String>,
     pub source: Option<String>,
-    pub tokenAmount: Option<UiTokenAmount>,
+    #[serde(rename = "tokenAmount")]
+    pub token_amount: Option<UiTokenAmount>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct UiTokenAmount {
     pub amount: String,
     pub decimals: u8,
-    pub uiAmount: f64,
-    pub uiAmountString: String,
+    #[serde(rename = "uiAmount")]
+    pub ui_amount: f64,
+    #[serde(rename = "uiAmountString")]
+    pub ui_amount_string: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -110,9 +114,11 @@ pub struct Info {
     pub lamports: Option<u64>,
     // Add new fields
     pub mint: Option<String>,
-    pub newAccount: Option<String>,
+    #[serde(rename = "newAccount")]
+    pub new_account: Option<String>,
     pub owner: Option<String>,
-    pub tokenAmount: Option<UiTokenAmount>,
+    #[serde(rename = "tokenAmount")]
+    pub token_amount: Option<UiTokenAmount>,
 }
 
 #[derive(Debug, Deserialize)]

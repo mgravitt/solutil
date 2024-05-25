@@ -1,0 +1,77 @@
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "blockTime": 1716583030,
+        "meta": {
+            "computeUnitsConsumed": 150,
+            "err": null,
+            "fee": 5000,
+            "innerInstructions": [],
+            "logMessages": [
+                "Program 11111111111111111111111111111111 invoke [1]",
+                "Program 11111111111111111111111111111111 success"
+            ],
+            "postBalances": [
+                17995000,
+                981995000,
+                1
+            ],
+            "postTokenBalances": [],
+            "preBalances": [
+                20000000,
+                979995000,
+                1
+            ],
+            "preTokenBalances": [],
+            "rewards": [],
+            "status": {
+                "Ok": null
+            }
+        },
+        "slot": 301135756,
+        "transaction": {
+            "message": {
+                "accountKeys": [
+                    {
+                        "pubkey": "8MkSggsdM5mibSoxhqaie6mp2tGQ6uAxwpc3kAj1dtVz",
+                        "signer": true,
+                        "source": "transaction",
+                        "writable": true
+                    },
+                    {
+                        "pubkey": "CtA6UyGFR9TBC1qa4QFxPQf3EJsdw2AhasSEz8GYDyip",
+                        "signer": false,
+                        "source": "transaction",
+                        "writable": true
+                    },
+                    {
+                        "pubkey": "11111111111111111111111111111111",
+                        "signer": false,
+                        "source": "transaction",
+                        "writable": false
+                    }
+                ],
+                "instructions": [
+                    {
+                        "parsed": {
+                            "info": {
+                                "destination": "CtA6UyGFR9TBC1qa4QFxPQf3EJsdw2AhasSEz8GYDyip",
+                                "lamports": 2000000,
+                                "source": "8MkSggsdM5mibSoxhqaie6mp2tGQ6uAxwpc3kAj1dtVz"
+                            },
+                            "type": "transfer"
+                        },
+                        "program": "system",
+                        "programId": "11111111111111111111111111111111",
+                        "stackHeight": null
+                    }
+                ],
+                "recentBlockhash": "Eh1kZ8N59ZA1mjZEf1ETpxU4hqdwb4rX7WUjvKYjxWN1"
+            },
+            "signatures": [
+                "3LfuWxR36zUb3NhXHPA1wSnuWtuFu85zvGkv58ZNcYBLZrp8hW65odahavFrx3c85jnX2nf7XLfhDxEqA4z9kDKj"
+            ]
+        }
+    },
+    "id": 1
+}
