@@ -1,7 +1,5 @@
 use reqwest::blocking::Client;
-// use prettytable::{Table, row};
 use log::debug;
-// use chrono::DateTime;
 use std::error::Error;
 use std::fs::File;
 use std::io::Write;
@@ -9,7 +7,11 @@ use serde_json;
 
 use crate::models::{SolanaSignature, RpcResponse};
 
-pub fn fetch_transaction_history(client: &Client, solana_rpc_url: &str, solana_address: &str) -> Result<(), Box<dyn Error>> {
+pub fn fetch_transaction_history(solana_rpc_url: &str, solana_address: &str) -> Result<(), Box<dyn Error>> {
+
+    // Create a client
+    let client = Client::new();
+
     // Fetch the transaction signatures
     let signatures_payload = serde_json::json!({
         "jsonrpc": "2.0",
@@ -56,11 +58,7 @@ pub fn fetch_transaction_history(client: &Client, solana_rpc_url: &str, solana_a
 
             let transaction_response_text = transaction_response.text()?;
 
-            // Convert the JSON string to pretty-printed format
-            // let pretty_json = serde_json::to_string_pretty(&transaction_response_text)
-            //     .expect("Failed to format JSON");
-
-             // Assuming `signature.signature` is the transaction ID
+            // Assuming `signature.signature` is the transaction ID
             // Use only the first 10 characters of the signature for the filename
             let file_name = format!("serializations/{}.json", &signature.signature[0..10]);
             let mut file = File::create(&file_name)?;

@@ -1,6 +1,5 @@
 #![allow(dead_code)]
 
-use reqwest::blocking::Client;
 use std::error::Error;
 use clap::Parser;
 use solana_sdk::signature::Signer;
@@ -9,6 +8,10 @@ use solana_sdk::signature::read_keypair_file;
 
 mod history;
 mod models;
+mod sol_history;
+mod fungible_history;
+mod fungible_token_transfer;
+mod sol_transfer;
 
 /// Simple program to fetch Solana transaction history
 #[derive(Parser, Debug)]
@@ -23,8 +26,8 @@ struct Args {
 
 #[derive(Parser, Debug)]
 enum Command {
-    /// Fetch transaction history
-    History {
+    /// Fetch transaction history and save each transaction to a file
+    SaveHistory {
         /// Solana RPC URL
         #[arg(short = 'u', long = "url")]
         solana_rpc_url: String,
@@ -32,6 +35,30 @@ enum Command {
         /// Solana address
         #[arg(short = 'a', long = "address")]
         solana_address: String,
+    },
+    /// Fetch SOL transaction history
+    SOLHistory {
+        /// Solana RPC URL
+        #[arg(short = 'u', long = "url")]
+        solana_rpc_url: String,
+        
+        /// Solana address
+        #[arg(short = 'a', long = "address")]
+        solana_address: String,
+    },
+    /// Fetch fungible token transaction history
+    FungibleHistory {
+        /// Solana RPC URL
+        #[arg(short = 'u', long = "url")]
+        solana_rpc_url: String,
+
+        /// Solana address
+        #[arg(short = 'a', long = "address")]
+        solana_address: String,
+
+        /// Mint address of the fungible token
+        #[arg(short = 'm', long = "mint")]
+        mint_address: String,
     },
     /// Send SOL from one account to another
     Send {
@@ -72,13 +99,17 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Parse arguments
     let args = Args::parse();
 
-    // Create a client
-    let client = Client::new();
-
     match args.command {
-        Command::History { solana_rpc_url, solana_address }=> {
-            history::fetch_transaction_history(&client, &solana_rpc_url, &solana_address)?;
-        }
+        Command::SOLHistory { solana_rpc_url, solana_address } => {
+            sol_history::print_sol_transfer_history(&solana_rpc_url, &solana_address)?;
+        },
+        Command::SaveHistory { solana_rpc_url, solana_address } => {
+            history::fetch_transaction_history(&solana_rpc_url, &solana_address)?;
+        },
+        Command::FungibleHistory { solana_rpc_url, solana_address, mint_address } => {
+            // Logic to fetch fungible token transaction history
+            fungible_history::print_fungible_transfer_history(&solana_rpc_url, &solana_address, &mint_address)?;
+        },
         Command::Send { solana_rpc_url, keypair, recipient, amount } => {
             println!("Send {:?} SOL from {} to {} via {}", amount, keypair, recipient, solana_rpc_url);
             use solana_client::rpc_client::RpcClient;
