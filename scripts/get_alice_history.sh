@@ -1,0 +1,1 @@
+/Users/max/github.com/mgravitt/solutil/target/release/solutil fungible-history --url "https://devnet.helius-rpc.com/?api-key=2df82555-a637-44d4-b155-8ba487d1d7f7" --address 4S4ZvPYTuPx2A2neQJyeoW5PqU2nrdd5VdxLc6CkPywV --mint evicjWR7acfKeXF7GGJqGHTWuEY2TYi3QDsUHGALUsU

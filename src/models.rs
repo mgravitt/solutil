@@ -20,7 +20,6 @@ pub struct SolanaTransactionDetails {
     #[serde(rename = "transaction")]
     pub transaction: Transaction,
     pub instructions: Vec<ParsedInstruction>,
-
 }
 
 #[derive(Debug, Deserialize)]
@@ -76,7 +75,6 @@ pub struct ParsedInstruction {
     pub parsed: Option<InstructionInfo>,
 }
 
-
 #[derive(Debug, Deserialize)]
 pub struct InstructionInfo {
     pub info: InfoDetails,
@@ -125,4 +123,3 @@ pub struct Info {
 pub struct RpcResponse<T> {
     pub result: T,
 }
-

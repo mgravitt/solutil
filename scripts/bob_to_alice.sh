@@ -1,0 +1,2 @@
+solana config set --keypair /Users/max/github.com/mgravitt/solutil/keys/bob.json 
+spl-token transfer evicjWR7acfKeXF7GGJqGHTWuEY2TYi3QDsUHGALUsU 1 CtA6UyGFR9TBC1qa4QFxPQf3EJsdw2AhasSEz8GYDyip --fund-recipient

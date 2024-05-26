@@ -1,0 +1,2 @@
+solana config set --keypair /Users/max/github.com/mgravitt/solutil/keys/alice.json 
+spl-token transfer evicjWR7acfKeXF7GGJqGHTWuEY2TYi3QDsUHGALUsU 1 8MkSggsdM5mibSoxhqaie6mp2tGQ6uAxwpc3kAj1dtVz --fund-recipient

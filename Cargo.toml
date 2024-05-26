@@ -17,4 +17,6 @@ solana-client = "1.18.14"
 solana-sdk = "1.18.14"
 spl-token = "4.0"
 solana-transaction-status = "1.18.14"
+spl-associated-token-account = "3.0.2"
+spl-token-2022 = "3.0.2"
 

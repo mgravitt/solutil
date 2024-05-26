@@ -17,11 +17,27 @@ impl FungibleTokenTransfer {
                     if let Some(parsed) = instruction.pointer("/parsed/info") {
                         if let Some(mint) = parsed.pointer("/mint").and_then(|v| v.as_str()) {
                             if mint == mint_to_match {
-                                if let Some(amount) = parsed.pointer("/tokenAmount/uiAmountString").and_then(|v| v.as_str()) {
-                                    if let Some(sender) = parsed.pointer("/source").or_else(|| parsed.pointer("/account")).and_then(|v| v.as_str()) {
-                                        if let Some(receiver) = parsed.pointer("/destination").or_else(|| parsed.pointer("/account")).and_then(|v| v.as_str()) {
-                                            let transaction_id = json.pointer("/result/transaction/signatures/0").and_then(|v| v.as_str())?.to_string();
-                                            let timestamp = json.pointer("/result/blockTime").and_then(|v| v.as_u64())?;
+                                if let Some(amount) = parsed
+                                    .pointer("/tokenAmount/uiAmountString")
+                                    .and_then(|v| v.as_str())
+                                {
+                                    if let Some(sender) = parsed
+                                        .pointer("/source")
+                                        .or_else(|| parsed.pointer("/account"))
+                                        .and_then(|v| v.as_str())
+                                    {
+                                        if let Some(receiver) = parsed
+                                            .pointer("/destination")
+                                            .or_else(|| parsed.pointer("/account"))
+                                            .and_then(|v| v.as_str())
+                                        {
+                                            let transaction_id = json
+                                                .pointer("/result/transaction/signatures/0")
+                                                .and_then(|v| v.as_str())?
+                                                .to_string();
+                                            let timestamp = json
+                                                .pointer("/result/blockTime")
+                                                .and_then(|v| v.as_u64())?;
 
                                             return Some(FungibleTokenTransfer {
                                                 transaction_id,
